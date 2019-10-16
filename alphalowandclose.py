@@ -27,10 +27,10 @@ class Factor(FactorBase):
         adjHigh = needData[t.HIGH] * needData[t.ADJFCT]
         adjClose = needData[t.CLOSE] * needData[t.ADJFCT]
         lowLow=self.calculator.Delay(x=adjLow, num=1)
-        highHigh=self.calculator.Delay(x=adjHigh, num=1)
+        highHigh=max(self.calculator.Delay(x=adjHigh, num=5))
         #preClose = self.calculator.Delay(x=adjClose, num=1)
         #distrib = (adjClose >= lowLow)*(adjClose - self.calculator.cmpMin(preClose, adjLow)) + (adjClose < preClose)*(adjClose - self.calculator.cmpMax(preClose, adjHigh))
-        factor = highHigh/lowLow
+        factor = adjClose/lowLow
         print(111111111111,factor)
         print('factor {0} done with {1} seconds'.format(self.factorName, time.time() - s))
         return factor
