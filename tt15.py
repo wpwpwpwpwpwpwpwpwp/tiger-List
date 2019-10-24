@@ -46,9 +46,9 @@ class Factor(FactorBase):
         adjHigh = needData[t.HIGH] * needData[t.ADJFCT]
         adjClose = needData[t.CLOSE] * needData[t.ADJFCT]
         #factor = needData[t.CLOSE]
-        #a=Factor.dailyVariationRate(adjClose)
-        #factor=self.calculator.Corr(a,adjVolume,10)
-        factor=self.calculator.Corr(adjClose,adjHigh,10)
+        a=Factor.dailyVariationRate(adjClose)
+        factor=self.calculator.Corr(a,adjVolume,10)
+        #factor=self.calculator.Corr(adjClose,adjHigh,10)
         print(111111111111,factor)
         print('factor {0} done with {1} seconds'.format(self.factorName, time.time() - s))
         return factor
